@@ -1,0 +1,410 @@
+/*
+==========================================================
+
+    IvanTill <3
+    memories.css
+    Version: v2.0.0
+
+==========================================================
+*/
+
+
+
+/* ======================================================
+   🦋 CONTENEDOR
+====================================================== */
+
+.memories-container{
+
+  width:min(1150px,95%);
+
+  flex:1;
+  min-height:0;
+
+  margin:0 auto;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:26px;
+
+  overflow:hidden;
+
+}
+
+/* ======================================================
+ 🌸 CABECERA
+====================================================== */
+
+.memories-header{
+
+  text-align:center;
+
+}
+
+.memories-header h2{
+
+  font-size:2rem;
+  font-weight:800;
+
+  color:var(--text);
+
+}
+
+.memories-header p{
+
+  margin-top:8px;
+
+  color:var(--text-light);
+
+  font-size:.98rem;
+
+}
+
+
+
+/* ======================================================
+ 🏷 CATEGORÍAS
+====================================================== */
+
+.memory-categories{
+
+  display:flex;
+
+  gap:12px;
+
+  justify-content:center;
+
+  flex-wrap:wrap;
+
+}
+
+
+
+.memory-category{
+
+  border:none;
+
+  padding:10px 18px;
+
+  border-radius:999px;
+
+  cursor:pointer;
+
+  font-size:.92rem;
+
+  font-weight:600;
+
+  color:var(--text);
+
+  background:rgba(255,255,255,.55);
+
+  backdrop-filter:blur(14px);
+
+  -webkit-backdrop-filter:blur(14px);
+
+  border:1px solid rgba(255,255,255,.5);
+
+  transition:.28s ease;
+
+}
+
+
+
+.memory-category:hover{
+
+  transform:translateY(-2px);
+
+  background:white;
+
+}
+
+
+
+.memory-category.active{
+
+  color:white;
+
+  background:linear-gradient(
+
+      135deg,
+
+      #B497FF,
+
+      #9EC8FF
+
+  );
+
+}
+
+
+
+/* ======================================================
+ 🖼 GRID
+====================================================== */
+
+.memories-grid{
+
+  /* // FIX: usar flex en lugar de height:100% para que el grid
+     // llene el espacio restante dentro del contenedor flex column */
+  flex:1;
+
+  min-height:0;
+
+  overflow-y:auto;
+
+  overflow-x:hidden;
+
+  display:grid;
+
+  grid-template-columns:
+      repeat(
+          auto-fill,
+          minmax(280px,1fr)
+      );
+
+  gap:22px;
+
+  padding:8px 8px 24px;
+
+}
+
+
+/* Scroll */
+
+.memories-grid::-webkit-scrollbar{
+
+  width:8px;
+
+}
+
+.memories-grid::-webkit-scrollbar-thumb{
+
+  border-radius:999px;
+
+  background:rgba(180,190,255,.55);
+
+}
+
+/* ======================================================
+   💜 TARJETAS
+====================================================== */
+
+.memory-card{
+
+  display:flex;
+  flex-direction:column;
+
+  overflow:hidden;
+
+  border-radius:28px;
+
+  background:rgba(255,255,255,.58);
+
+  backdrop-filter:blur(18px);
+
+  -webkit-backdrop-filter:blur(18px);
+
+  border:1px solid rgba(255,255,255,.45);
+
+  box-shadow:var(--shadow);
+
+  transition:
+      transform .30s ease,
+      box-shadow .30s ease,
+      background .30s ease;
+
+}
+
+
+
+.memory-card:hover{
+
+  transform:
+      translateY(-8px);
+
+  background:white;
+
+  box-shadow:
+      0 18px 42px
+      rgba(80,95,150,.18);
+
+}
+
+
+
+/* ======================================================
+ 🖼 IMAGEN
+====================================================== */
+
+.memory-image{
+
+  width:100%;
+
+  height:260px;
+
+  object-fit:cover;
+
+  display:block;
+
+}
+
+
+
+/* ======================================================
+ 🌸 CONTENIDO
+====================================================== */
+
+.memory-content{
+
+  padding:18px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:14px;
+
+  flex:1;
+
+}
+
+
+
+.memory-text{
+
+  color:var(--text);
+
+  line-height:1.8;
+
+  font-size:.96rem;
+
+}
+
+
+
+/* ======================================================
+ ❤️ PIE
+====================================================== */
+
+.memory-footer{
+
+  margin-top:auto;
+
+  display:flex;
+
+  justify-content:flex-end;
+
+}
+
+
+
+/* ======================================================
+ ❤️ BOTÓN FAVORITO
+====================================================== */
+
+.memory-favorite{
+
+  width:44px;
+
+  height:44px;
+
+  border:none;
+
+  cursor:pointer;
+
+  border-radius:999px;
+
+  background:transparent;
+
+  transition:.25s ease;
+
+}
+
+
+
+.memory-favorite:hover{
+
+  background:
+
+      rgba(236,229,255,.8);
+
+}
+
+
+
+.memory-favorite span{
+
+  font-size:28px;
+
+  color:#B095FF;
+
+  transition:.3s ease;
+
+}
+
+
+/* <!-- FIX: estado activo del boton favorito --> */
+
+.memory-favorite.active{
+
+  background:#EEE7FF;
+
+}
+
+
+.memory-favorite.active span{
+
+  color:#8B6DFF;
+
+  animation:favoritePop .28s ease;
+
+}
+
+
+
+/* ======================================================
+ 📱 RESPONSIVE
+====================================================== */
+
+@media(max-width:760px){
+
+  .memories-grid{
+
+      grid-template-columns:1fr;
+
+  }
+
+}
+
+/* ======================================================
+   ✨ SCROLL DEL TEXTO
+====================================================== */
+
+.memory-text{
+
+  max-height:160px;
+
+  overflow-y:auto;
+
+  padding-right:6px;
+
+}
+
+
+
+.memory-text::-webkit-scrollbar{
+
+  width:6px;
+
+}
+
+
+
+.memory-text::-webkit-scrollbar-thumb{
+
+  background:rgba(180,190,255,.55);
+
+  border-radius:999px;
+
+}

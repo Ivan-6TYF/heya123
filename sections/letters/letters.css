@@ -1,0 +1,577 @@
+/* ════════════════════════════════════════════════ */
+/* 💌 CARTITAS • IvanTill v1.0 */
+/* ════════════════════════════════════════════════ */
+
+
+
+/* ======================================================
+   💌 CONTENEDOR
+====================================================== */
+
+.letters-container{
+
+  width:min(920px,95%);
+  height:100%;
+
+  margin:auto;
+
+  display:flex;
+  flex-direction:column;
+
+  overflow:hidden;
+
+}
+
+
+
+/* ======================================================
+ 💜 CABECERA
+====================================================== */
+
+.letters-header{
+
+  text-align:center;
+
+  margin-bottom:28px;
+
+}
+
+
+
+.letters-header h2{
+
+  font-size:2rem;
+
+  font-weight:800;
+
+}
+
+
+
+.letters-header p{
+
+  margin-top:8px;
+
+  color:var(--text-light);
+
+  line-height:1.7;
+
+}
+
+
+
+/* ======================================================
+ 📬 LISTA
+====================================================== */
+
+.letters-list{
+
+  flex:1;
+
+  overflow-y:auto;
+
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+
+  padding-right:8px;
+
+}
+
+
+
+.letters-list::-webkit-scrollbar{
+
+  width:8px;
+
+}
+
+
+
+.letters-list::-webkit-scrollbar-thumb{
+
+  background:rgba(180,190,255,.55);
+
+  border-radius:999px;
+
+}
+
+
+
+/* ======================================================
+ ✉ SOBRE
+====================================================== */
+
+.letter-card{
+
+  position:relative;
+
+  border:none;
+
+  cursor:pointer;
+
+  font-family:inherit;
+
+  background:rgba(255,255,255,.58);
+
+  backdrop-filter:blur(18px);
+
+  border-radius:26px;
+
+  padding:24px;
+
+  text-align:left;
+
+  display:flex;
+  align-items:center;
+  gap:18px;
+
+  border:1px solid rgba(255,255,255,.45);
+
+  box-shadow:var(--shadow);
+
+  transition:
+      transform .28s ease,
+      box-shadow .28s ease,
+      background .28s ease;
+
+}
+
+
+
+.letter-card:hover{
+
+  transform:translateY(-5px);
+
+  background:white;
+
+  box-shadow:
+      0 18px 40px rgba(100,110,170,.12);
+
+}
+
+
+
+/* Sellito del sobre */
+
+.letter-card::before{
+
+  content:"✉";
+
+  font-size:1.4rem;
+
+  opacity:.18;
+
+  position:absolute;
+
+  right:22px;
+
+  top:18px;
+
+}
+
+
+
+/* Emoji */
+
+.letter-card-emoji{
+
+  width:58px;
+  height:58px;
+
+  border-radius:18px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background:rgba(255,255,255,.6);
+
+  font-size:1.8rem;
+
+}
+
+
+
+/* Información */
+
+.letter-card-info{
+
+  flex:1;
+
+}
+
+
+
+.letter-card-info h3{
+
+  font-size:1.05rem;
+
+  font-weight:800;
+
+}
+
+
+
+.letter-date-preview{
+
+  margin-top:5px;
+
+  font-size:.82rem;
+
+  color:#9098B5;
+
+}
+
+
+
+.letter-card-info p{
+
+  margin-top:8px;
+
+  color:var(--text-light);
+
+  line-height:1.6;
+
+}
+
+
+
+/* ======================================================
+ 💌 MODAL
+====================================================== */
+
+.letter-modal{
+
+  position:fixed;
+
+  inset:0;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  opacity:0;
+
+  pointer-events:none;
+
+  transition:.35s ease;
+
+  z-index:999;
+
+}
+
+
+
+.letter-modal.active{
+
+  opacity:1;
+
+  pointer-events:auto;
+
+}
+
+
+
+/* Fondo */
+
+.letter-overlay{
+
+  position:absolute;
+
+  inset:0;
+
+  background:rgba(25,28,40,.18);
+
+  backdrop-filter:blur(5px);
+
+}
+
+/* ======================================================
+   📄 PAPEL
+====================================================== */
+
+.letter-paper{
+
+  position:relative;
+
+  width:min(760px,92vw);
+
+  max-height:88vh;
+
+  display:flex;
+  flex-direction:column;
+
+  overflow:hidden;
+
+  background:
+      linear-gradient(
+          180deg,
+          #FFFDF9 0%,
+          #FFF9F1 100%
+      );
+
+  border-radius:30px;
+
+  box-shadow:
+      0 30px 80px rgba(70,80,120,.18);
+
+  padding:42px;
+
+  transform:
+      translateY(30px)
+      scale(.96);
+
+  transition:
+      transform .35s ease;
+
+}
+
+
+
+/* Cuando se abre */
+
+.letter-modal.active .letter-paper{
+
+  transform:
+      translateY(0)
+      scale(1);
+
+}
+
+
+
+/* ======================================================
+ ❤️ FAVORITO
+====================================================== */
+
+.letter-paper .favorite-button{
+
+  position:absolute;
+
+  top:22px;
+
+  right:78px;
+
+}
+
+
+
+/* ======================================================
+ ❌ CERRAR
+====================================================== */
+
+.letter-close{
+
+  position:absolute;
+
+  top:20px;
+
+  right:20px;
+
+  width:46px;
+  height:46px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:white;
+
+  cursor:pointer;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  box-shadow:0 10px 22px rgba(90,100,150,.12);
+
+  transition:.25s;
+
+}
+
+
+
+.letter-close:hover{
+
+  transform:scale(1.08);
+
+}
+
+
+
+/* ======================================================
+ 💌 EMOJI
+====================================================== */
+
+.letter-emoji{
+
+  text-align:center;
+
+  font-size:3rem;
+
+}
+
+
+
+/* ======================================================
+ 📅 FECHA
+====================================================== */
+
+.letter-date{
+
+  margin-top:10px;
+
+  text-align:center;
+
+  color:#9AA3BC;
+
+  font-size:.9rem;
+
+  letter-spacing:.08em;
+
+}
+
+
+
+/* ======================================================
+ 📝 TÍTULO
+====================================================== */
+
+.letter-title{
+
+  margin-top:16px;
+
+  text-align:center;
+
+  font-size:2rem;
+
+  font-weight:800;
+
+}
+
+
+
+/* ======================================================
+ 🌸 SEPARADOR
+====================================================== */
+
+.letter-divider{
+
+  width:90px;
+
+  height:4px;
+
+  margin:24px auto;
+
+  border-radius:999px;
+
+  background:
+      linear-gradient(
+          90deg,
+          #A9D8FF,
+          #DCCEFF,
+          #FFD9E8
+      );
+
+}
+
+
+
+/* ======================================================
+ 📜 CONTENIDO
+====================================================== */
+
+.letter-content{
+
+  flex:1;
+
+  overflow-y:auto;
+
+  min-height:0;
+
+  padding-right:12px;
+
+  white-space:pre-wrap;
+
+  line-height:2.1;
+
+  font-size:1.02rem;
+
+}
+
+
+
+/* Scroll */
+
+.letter-content::-webkit-scrollbar{
+
+  width:8px;
+
+}
+
+
+
+.letter-content::-webkit-scrollbar-thumb{
+
+  background:rgba(180,190,255,.55);
+
+  border-radius:999px;
+
+}
+
+
+
+/* ======================================================
+ 💜 FIRMA
+====================================================== */
+
+.letter-signature{
+
+  margin-top:28px;
+
+  text-align:center;
+
+  color:var(--text-light);
+
+  font-style:italic;
+
+}
+
+
+
+/* ======================================================
+ 📱 RESPONSIVE
+====================================================== */
+
+@media(max-width:700px){
+
+  .letter-paper{
+
+      width:95vw;
+
+      height:92vh;
+
+      max-height:none;
+
+      border-radius:26px;
+
+      padding:26px;
+
+  }
+
+  .letter-title{
+
+      font-size:1.55rem;
+
+  }
+
+  .letter-content{
+
+      font-size:.96rem;
+
+      line-height:1.9;
+
+  }
+
+}
